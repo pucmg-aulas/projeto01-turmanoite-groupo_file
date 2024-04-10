@@ -1,16 +1,16 @@
-# Nome do projeto
-Escreva um ou dois parágrafos resumindo o objetivo do seu projeto.
+# Restaurante Filé
+Um restrante file
 
 ## Alunos integrantes da equipe
 
-* Nome completo do aluno 1
-* Nome completo do aluno 2
-* Nome completo do aluno 3
-* Nome completo do aluno 4
-* Nome completo do aluno 4
-* Nome completo do aluno 4
+* Davi Mendes
+* Eduarda Ribeiro Vilaça
+* Guilherme Rodrigues
+* João Vitor Tolentino
+* Marcus Vinícius Vieira Alves
+* Thiago Pimentel de Almeida
 
 ## Professor responsável 
 
-* Nome completo do professor 1
+* Danilo Boechat Seufitelli
 
