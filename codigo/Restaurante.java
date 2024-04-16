@@ -1,4 +1,4 @@
-public class Restaurantes{
+public class Restaurante{
   //atributos
   private Mesas quantidadeMesas[];
 
