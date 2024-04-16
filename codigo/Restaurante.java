@@ -1,11 +1,11 @@
 public class Restaurante{
   //atributos
-  private Mesas quantidadeMesas[];
+  private Mesa quantidadeMesas[];
 
-  public Mesas getQuantidadeMesas(){
+  public Mesa getQuantidadeMesas(){
     return quantidadeMesas;
   }
-  public void setQuantidadeMesas(Mesas quantidadeMesas){
+  public void setQuantidadeMesas(Mesa quantidadeMesas){
     this.quantidadeMesas = quantidadeMesas;
   }
 }
