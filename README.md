@@ -1,5 +1,5 @@
 # Restaurante Filé
-Um restrante file
+Um restaurante file
 
 ## Alunos integrantes da equipe
 
