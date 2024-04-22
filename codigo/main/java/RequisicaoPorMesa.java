@@ -5,10 +5,16 @@ public class RequisicaoPorMesa {
     private LocalDateTime dataSaida;
     private int numeroPessoas;
     private Mesa mesa;
+    private Cliente cliente;
+    
 
-    public RequisicaoPorMesa(LocalDateTime dataEntrada, int numeroPessoas) {
+
+    public RequisicaoPorMesa(LocalDateTime dataEntrada, int numeroPessoas, Cliente cliente) {
         this.dataEntrada = dataEntrada;
         this.numeroPessoas = numeroPessoas;
+        this.cliente = cliente;
+        
+
     }
 
     public LocalDateTime getDataEntrada() {
@@ -31,9 +37,14 @@ public class RequisicaoPorMesa {
         return numeroPessoas;
     }
 
-    public void setNumeroPessoas(int numeroPessoas) {
-        this.numeroPessoas = numeroPessoas;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+    
 
     public void alocarMesa(Mesa mesa) {
         if (mesa.estaDisponivel() && mesa.getCapacidade() >= numeroPessoas) {
