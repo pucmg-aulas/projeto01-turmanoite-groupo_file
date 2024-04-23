@@ -30,6 +30,12 @@ class Mesa {
         return capacidade;
     }
 
+    public boolean estaDisponivel(int numeroPessoas)
+    {
+        
+        return !ocupada;
+    }
+
     public void setCapacidade(int capacidade) {
         this.capacidade = capacidade;
     }
