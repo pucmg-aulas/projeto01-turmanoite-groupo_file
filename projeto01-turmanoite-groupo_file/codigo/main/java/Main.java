@@ -15,37 +15,37 @@ public class Main {
 
             int opcao = scanner.nextInt();
             scanner.nextLine(); // Consumir a quebra de linha após o número
-
+            Cliente cliente = new Cliente("",0, LocalDateTime.now(),null ,0);
+            RequisicaoPorMesa requisicao = cliente.requisitarMesa();
             switch (opcao) {
                 case 1:
                     System.out.print("Nome do cliente: ");
                     String nomeCliente = scanner.nextLine();
+                    cliente.setNome(nomeCliente);
                     System.out.print("Número de pessoas: ");
                     int numeroPessoas = scanner.nextInt();
+                    cliente.setQuantidadePessoas(numeroPessoas);
                     System.out.println("Qual a sua id:");
                     int id = scanner.nextInt();
+                    cliente.setId(id);
                     scanner.nextLine(); // Consumir a quebra de linha após o número
 
-                    Cliente cliente = new Cliente(nomeCliente, id, LocalDateTime.now(),null ,numeroPessoas);
-                    RequisicaoPorMesa requisicao = cliente.requisitarMesa();
-
-
-                    //nao entendi essa parte do codigo
-                    /*// Encontra uma mesa disponível e a aloca para a requisição
                     boolean mesaAlocada = false;
+                    
                     for (Mesa mesa : restaurante.getMesas()) {
-                        if (mesa.estaDisponivel() && mesa.getCapacidade() >= numeroPessoas) {
+                        if (mesa.estaDisponivel(numeroPessoas) && mesa.getCapacidade() >= numeroPessoas) {
                             requisicao.alocarMesa(mesa);
                             mesaAlocada = true;
                             break;
                         }
-                    }*/
+                    }
+
                 case 2:
                     System.out.print("Número da mesa: ");
                     int numeroMesa = scanner.nextInt();
                     scanner.nextLine(); // Consumir a quebra de linha após o número
-
-                    restaurante.finalizarRequisicao(numeroMesa);
+                    
+                    requisicao.finalizar(numeroMesa);
                     System.out.println("Requisição por mesa finalizada com sucesso!");
                     break;
                 case 3:
