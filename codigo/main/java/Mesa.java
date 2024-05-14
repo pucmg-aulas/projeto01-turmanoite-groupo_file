@@ -5,12 +5,12 @@ public  class Mesa
     private int capacidade;
     private Cliente cliente;
 
-    public Mesa (int n,int capa , Cliente c)
+    public Mesa (int numero,int capacidade, boolean ocupada )
     {
-        this.setNumero(n);
-        this.setOcupada(false);
-        this.setCapacidade(capa);
-        this.setCliente(c);
+        this.numero = numero;
+        this.ocupada = ocupada;
+        this.capacidade = capacidade;
+        
     }
 
     public int getNumero() {
@@ -22,7 +22,7 @@ public  class Mesa
     }
 
     public boolean isOcupada() {
-        return ocupada;
+        return this.ocupada;
     }
 
     public void setOcupada(boolean ocupada) {
@@ -44,4 +44,12 @@ public  class Mesa
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
+
+    public void ocupar() {
+        this.ocupada = false;
+      }
+    
+      public void desocupar() {
+        this.ocupada = true;
+      }
 }
