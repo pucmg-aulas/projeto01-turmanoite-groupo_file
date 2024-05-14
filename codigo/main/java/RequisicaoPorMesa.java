@@ -1,35 +1,27 @@
-
-import java.io.Serializable;
-public class RequisicaoPorMesa implements Serializable {
-    
-    
-    
-    private Cliente cliente;
+public class RequisicaoPorMesa
+{
     private Mesa mesa;
-    
+    private Cliente cliente;
 
-
-    public RequisicaoPorMesa(Mesa mesa, Cliente cliente) {
-        
-        this.mesa = mesa;
-        this.cliente = cliente;
-        
+    public RequisicaoPorMesa( Mesa m, Cliente c)
+    {
+        this.setMesa(m);
+        this.setCliente(c);
     }
 
-    
-    public void setMesa(Mesa mesa) {
-        this.mesa = mesa;
-    }
-    
     public Mesa getMesa() {
         return mesa;
     }
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+
+    public void setMesa(Mesa mesa) {
+        this.mesa = mesa;
     }
 
     public Cliente getCliente() {
         return cliente;
     }
-    
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
 }

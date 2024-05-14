@@ -1,17 +1,16 @@
-import java.io.Serializable;
-
-class Mesa implements Serializable{
-
+public  class Mesa
+{
     private int numero;
     private boolean ocupada;
     private int capacidade;
     private Cliente cliente;
 
-    public Mesa(int numero, int capacidade) {
-        this.numero = numero;
-        this.ocupada = false;
-        this.capacidade = capacidade;
-        this.cliente = null;
+    public Mesa (int n,int capa , Cliente c)
+    {
+        this.setNumero(n);
+        this.setOcupada(false);
+        this.setCapacidade(capa);
+        this.setCliente(c);
     }
 
     public int getNumero() {
@@ -22,10 +21,6 @@ class Mesa implements Serializable{
         this.numero = numero;
     }
 
-    public int getCapacidade() {
-        return capacidade;
-    }
-
     public boolean isOcupada() {
         return ocupada;
     }
@@ -34,14 +29,19 @@ class Mesa implements Serializable{
         this.ocupada = ocupada;
     }
 
+    public int getCapacidade() {
+        return capacidade;
+    }
+
+    public void setCapacidade(int capacidade) {
+        this.capacidade = capacidade;
+    }
+
     public Cliente getCliente() {
         return cliente;
     }
 
-    public void setCliente(Cliente cliente)
-    {
+    public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
-
-   
 }
