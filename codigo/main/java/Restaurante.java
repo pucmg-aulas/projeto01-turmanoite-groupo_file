@@ -1,60 +1,74 @@
 import java.io.*;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.io.Serializable;
+import java.util.Scanner;
 
 public class Restaurante implements Serializable{
     
-    private List<Mesa> mesas;
-    private List<RequisicaoPorMesa> filaEspera;
+    
 
     public Restaurante()
     {
-    mesas = new ArrayList <>();
-    filaEspera = new ArrayList <>();
-
-    mesas.add(new Mesa(1,2));
-    mesas.add(new Mesa(2,2));
-    mesas.add(new Mesa(3,4));
-    mesas.add(new Mesa(4,4));
-    mesas.add(new Mesa(5,6));
-    mesas.add(new Mesa(6,6));
-    mesas.add(new Mesa(7,8));
-    mesas.add(new Mesa(8,8));
-    mesas.add(new Mesa(9,10));
-    mesas.add(new Mesa(10,10));
+        
     }
     
 
-    public List<Mesa> getMesas()
-    {
-        return mesas;
-    }
     
-    public void requisitarMesa(String nome, int nPessoas)
+    
+    public void requisitarMesa(List<Mesa> mesas)
     {
-        Cliente cliente = new Cliente(nome,nPessoas);
-        Mesa mesaDisponivel = procurar(cliente.getQuantidadePessoas());
+        ArrayList<RequisicaoPorMesa> requisicoes;
+        requisicoes = new ArrayList <>();
 
-        if(mesaDisponivel != null)
-        {
-            mesaDisponivel.setOcupada(false);
-            mesaDisponivel.setCliente(cliente);
-            
-            System.out.println("Mesa disponivel para " + nome );
-        }else {
-            if(cliente.getQuantidadePessoas() <= 10)
-            {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Nome do Cliente:");
+        String nomeCliente = scanner.nextLine();
+               
+        System.out.println("Quantidade de Pessoas:");
+        int nPessoas = scanner.nextInt();
+              
+        scanner.nextLine();
                 
-                filaEspera.add(new RequisicaoPorMesa( null, cliente));
-                System.out.println("Não há mesa disponivel.");
-            }else{
-                System.out.println("Não possuimos mesas com mais de 10 lugares");
+        Mesa disponivel = mesas.stream().filter(Mesa::isOcupada).findFirst().orElse(null);
+        if (disponivel != null) {
+            disponivel.ocupar();
+            RequisicaoPorMesa novaRequisicao = new RequisicaoPorMesa(nomeCliente, nPessoas, disponivel);
+            if(novaRequisicao ==null)
+            {
+                throw new IllegalArgumentException("Error");
+            }
+            requisicoes.add(novaRequisicao);
+            System.out.println("Mesa disponivel para o cliente");
+        } else {
+            System.out.println("Nenhuma mesa disponível no momento.");
+        }
+    }
+
+    public String imprimirLista(List<RequisicaoPorMesa> filaEspera) {
+        StringBuilder build = new StringBuilder();
+        for (RequisicaoPorMesa requisicao : filaEspera) {
+            build.append("Cliente: ").append(requisicao.getNomeCliente())
+              .append(", Lugares: ").append(requisicao.getNPessoas())
+              .append(", Mesa: ").append(requisicao.getMesaUtilizada().getCapacidade())
+              .append(" lugares\n");
+        }
+        return build.toString();
+    }
+
+    /*public void mesaLiberada(int nMesa, List<Mesa> mesas) {
+        if(nMesa > 10)
+        {
+            System.out.println("Mesa não existe");
+        }else
+        {
+            for(nMesa : mesas){
+
             }
         }
     }
 
-    public void mesaLiberada(int nMesa)
+     public void mesaLiberada(int nMesa)
     {
         Mesa mesa = mesas.get(nMesa - 1);
         mesa.setOcupada(true);
@@ -132,6 +146,6 @@ public class Restaurante implements Serializable{
             e.printStackTrace();
         }
     }
-
+*/
   
 }
