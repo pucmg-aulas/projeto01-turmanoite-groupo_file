@@ -14,16 +14,16 @@ public class Main {
         mesas = new ArrayList <>();
         filaEspera = new ArrayList <>();
 
-        mesas.add(new Mesa(1,2,true));
-        mesas.add(new Mesa(2,2,true));
+        mesas.add(new Mesa(1,4,true));
+        mesas.add(new Mesa(2,4,true));
         mesas.add(new Mesa(3,4,true));
         mesas.add(new Mesa(4,4,true));
         mesas.add(new Mesa(5,6,true));
         mesas.add(new Mesa(6,6,true));
-        mesas.add(new Mesa(7,8,true));
-        mesas.add(new Mesa(8,8,true));
-        mesas.add(new Mesa(9,10,true));
-        mesas.add(new Mesa(10,10,true));
+        mesas.add(new Mesa(7,6,true));
+        mesas.add(new Mesa(8,6,true));
+        mesas.add(new Mesa(9,8,true));
+        mesas.add(new Mesa(10,8,true));
         
        
         for(;;)
@@ -49,7 +49,7 @@ public class Main {
                 //Método Liberar Mesa
                 System.out.println("Mesa a ser liberada:");
                 int nMesa = scanner.nextInt();
-                restaurante.mesaLiberada(nMesa);
+                restaurante.mesaLiberada(nMesa, mesas);
                 
 
              /*}else if(op == 3){
