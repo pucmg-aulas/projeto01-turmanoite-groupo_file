@@ -1,39 +1,38 @@
-import java.time.LocalTime;
-
 public class RequisicaoPorMesa
 {
-    private String nomeCliente;
-    private int nPessoas;
-    
-    private Mesa mesaUtilizada;  
-    public RequisicaoPorMesa(String nomeCliente, int nPessoas,  Mesa mesa) {
-        this.nomeCliente = nomeCliente;
-        this.nPessoas = nPessoas;
-        
-        this.mesaUtilizada = mesa;
+    private Cliente cliente;
+    private Mesa mesa = null;
+    public RequisicaoPorMesa( Cliente c, Restaurante restaurante,FIlaDeEspera f) {
+        setCliente(c);
+
+        for (int i = 0; i <= restaurante.mesas.size(); i++) {
+            if (!restaurante.mesas.get(i).isOcupada()) {
+                if (this.cliente.getQuantidadePessoas() <= restaurante.mesas.get(i).getCapacidade()) {
+                    System.out.println("Mesa disponivel");
+                    restaurante.mesas.get(i).setOcupada(true);
+                    this.setMesa(restaurante.mesas.get(i));
+                    break;
+                }
+            }
+        }
+        if(this.getMesa() == null){
+            f.adicionarAFila(c);
+        }
     }
 
-    
-    
-    public String getNomeCliente() {
-        return this.nomeCliente;
+    public Cliente getCliente() {
+        return cliente;
     }
 
-    public int getNPessoas() {
-        return this.nPessoas;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
-    public Mesa getMesaUtilizada() {
-        return this.mesaUtilizada;
+    public Mesa getMesa() {
+        return mesa;
     }
 
-    public void setMesaUtilizada(Mesa mesa) {
-        this.mesaUtilizada = mesa;
+    public void setMesa(Mesa mesa) {
+        this.mesa = mesa;
     }
-
-    
-
-    
-
-    
 }

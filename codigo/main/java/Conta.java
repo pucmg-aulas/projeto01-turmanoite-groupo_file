@@ -1,23 +1,26 @@
-import java.util.ArrayList; 
+import java.util.ArrayList;
 public class Conta {
 
-    private List<Cardapio> itens;
+    private ArrayList<Cardapio> itens;
     private Mesa mesa;
 
-    public Conta(List<Cardapio> itens, Mesa mesa) {
-        this.itens = itens;
+    public Conta(Mesa mesa) {
         this.mesa = mesa;
+        this.itens = new ArrayList<Cardapio>();
+    }
+    public void addPedido (Cardapio c) {
+        itens.add(c);
     }
 
-    public float calcularTotal() {
-        float total = 0.0f;
-        for (i = 0; i < itens.size(); i++) {
-            total += itens.get(i).getPreco();
+    public double calcularTotal() {
+        double total = 0.0;
+        for (int i = 0; i < itens.size(); i++) {
+            total += itens.get(i).getPreco(); // Adiciona o valor do item à variável total
         }
         return total;
     }
 
-    public List<Cardapio> getItens() {
+    public ArrayList<Cardapio> getItens() {
         return itens;
     }
 
@@ -25,7 +28,7 @@ public class Conta {
         return mesa;
     }
 
-    public void setItens(List<Cardapio> itens) {
+    public void setItens(ArrayList<Cardapio> itens) {
         this.itens = itens;
     }
 

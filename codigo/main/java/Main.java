@@ -9,72 +9,74 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Restaurante restaurante = new Restaurante();
-        List<Mesa> mesas;
-        List<RequisicaoPorMesa> filaEspera;
-        mesas = new ArrayList <>();
-        filaEspera = new ArrayList <>();
-
-        mesas.add(new Mesa(1,4,true));
-        mesas.add(new Mesa(2,4,true));
-        mesas.add(new Mesa(3,4,true));
-        mesas.add(new Mesa(4,4,true));
-        mesas.add(new Mesa(5,6,true));
-        mesas.add(new Mesa(6,6,true));
-        mesas.add(new Mesa(7,6,true));
-        mesas.add(new Mesa(8,6,true));
-        mesas.add(new Mesa(9,8,true));
-        mesas.add(new Mesa(10,8,true));
-        
-       
-        for(;;)
-        {
-            
-            System.out.println("------ Menu ------");
-            System.out.println("1. Cliente Novo");
-            System.out.println("2. Liberar Mesa");
-            System.out.println("3. Mesas Ocupadas");
-            System.out.println("4. Lista de Espera");
-            System.out.println("5. Sair");
-            System.out.println("------------------");
-            System.out.println("Escolha uma opção: ");
-            int op = scanner.nextInt();
-            scanner.nextLine();
-
-            if(op == 1)
+        FIlaDeEspera fila = new FIlaDeEspera();
+        RequisicaoPorMesa novaRequisicao = null;
+        Conta conta = null;
+        int op;
+        do
             {
-                
-                restaurante.requisitarMesa(mesas);
-                
-            }else if(op == 2){
-                //Método Liberar Mesa
-                System.out.println("Mesa a ser liberada:");
-                int nMesa = scanner.nextInt();
-                restaurante.mesaLiberada(nMesa, mesas);
-                
 
-             /*}else if(op == 3){
-                //Método quais mesas estão ocupadas
-                System.out.println("Mesas Indisponiveis");
-                int i = 0;
-                for(Mesa mesa : restaurante.getMesas()){
-                    if(mesa.isOcupada() == false)
-                    {
-                        
-                        System.out.println("Mesa " + i );
-                        
+                System.out.println("------ Menu ------");
+                System.out.println("1. Cliente Novo");
+                System.out.println("2. Fazer pedido");
+                System.out.println("3. Fechar Conta");
+                System.out.println("4. Lista de Espera");
+                System.out.println("5. Sair");
+                System.out.println("------------------");
+                System.out.println("Escolha uma opção: ");
+                op = scanner.nextInt();
+                scanner.nextLine();
+
+                if(op == 1)
+                {
+                    System.out.println("Digite o seu nome:");
+                    String nome = scanner.nextLine();
+                    System.out.println("Digite agora a quantidade de Pessoas Desejadas");
+                    int qtdDePessoas = scanner.nextInt();
+
+                    Cliente novo = new Cliente(nome, qtdDePessoas);
+                    novaRequisicao = new RequisicaoPorMesa(novo , restaurante, fila);
+
+                }else if(op == 2){
+                    if (novaRequisicao != null) {
+                        System.out.println("Digite o nome do prato");
+                        String prato = scanner.nextLine();
+                        System.out.println("Digite o preço");
+                        double preco = scanner.nextDouble();
+
+                        Cardapio c = new Cardapio(prato, preco);
+
+                        conta = new Conta(novaRequisicao.getMesa());
+                        conta.addPedido(c);
+                    }  else if(op == 3) {
+                        if (novaRequisicao != null && conta != null) {
+                            double total = conta.calcularTotal();
+                            System.out.println("Total da conta: " + total);
+                            conta = null;
+                        } else {
+                            System.out.println("Nenhuma conta aberta para fechar.");
+                        }
                     }
-                    i++;
-                }
-             */}else if(op == 4){
+
+                else if(op == 4){
                 System.out.println("Lista de espera:");
-                restaurante.imprimirLista(filaEspera);
-           }else if(op == 5){
-                break;
-            }else{
-                System.out.println("Opção inválida");
-            }
-            
-        }
+                ArrayList<Cliente> filaEspera = fila.getFila();
+                if (filaEspera.isEmpty()) {
+                    System.out.println("A fila de espera está vazia.");
+                } else {
+                    for (int i = 0; i < filaEspera.size(); i++) {
+                        Cliente cliente = filaEspera.get(i);
+                        System.out.println("Cliente " + (i+1) + ": " + cliente.getNome());
+                    }
+                }
+                }else if(op == 5){
+                    break;
+                }else{
+                    System.out.println("Opção inválida");
+                }
+
+                }
+        }while (op != 5);
         scanner.close();
     }
 }
