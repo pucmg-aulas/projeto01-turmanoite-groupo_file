@@ -1,27 +1,39 @@
+import java.time.LocalTime;
+
 public class RequisicaoPorMesa
 {
-    private Mesa mesa;
-    private Cliente cliente;
-
-    public RequisicaoPorMesa( Mesa m, Cliente c)
-    {
-        this.setMesa(m);
-        this.setCliente(c);
+    private String nomeCliente;
+    private int nPessoas;
+    
+    private Mesa mesaUtilizada;  
+    public RequisicaoPorMesa(String nomeCliente, int nPessoas,  Mesa mesa) {
+        this.nomeCliente = nomeCliente;
+        this.nPessoas = nPessoas;
+        
+        this.mesaUtilizada = mesa;
     }
 
-    public Mesa getMesa() {
-        return mesa;
+    
+    
+    public String getNomeCliente() {
+        return this.nomeCliente;
     }
 
-    public void setMesa(Mesa mesa) {
-        this.mesa = mesa;
+    public int getNPessoas() {
+        return this.nPessoas;
     }
 
-    public Cliente getCliente() {
-        return cliente;
+    public Mesa getMesaUtilizada() {
+        return this.mesaUtilizada;
     }
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+    public void setMesaUtilizada(Mesa mesa) {
+        this.mesaUtilizada = mesa;
     }
+
+    
+
+    
+
+    
 }
