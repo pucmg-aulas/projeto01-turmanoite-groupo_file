@@ -1,27 +1,36 @@
 import java.io.*;
-
+import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        Restaurante restaurante = new Restaurante();  // Criando um restaurante com 10 mesas
+        Restaurante restaurante = new Restaurante();
+        List<Mesa> mesas;
+        List<RequisicaoPorMesa> filaEspera;
+        mesas = new ArrayList <>();
+        filaEspera = new ArrayList <>();
+
+        mesas.add(new Mesa(1,2,true));
+        mesas.add(new Mesa(2,2,true));
+        mesas.add(new Mesa(3,4,true));
+        mesas.add(new Mesa(4,4,true));
+        mesas.add(new Mesa(5,6,true));
+        mesas.add(new Mesa(6,6,true));
+        mesas.add(new Mesa(7,8,true));
+        mesas.add(new Mesa(8,8,true));
+        mesas.add(new Mesa(9,10,true));
+        mesas.add(new Mesa(10,10,true));
         
-
-        File mesasIndisponiveisFile = new File("mesaindisponivel.txt");
-        File listaEsperaFile = new File("lista_espera.txt");
-
-        if (mesasIndisponiveisFile.exists()) {
-            restaurante = new Restaurante();
-        } else {
-            restaurante = new Restaurante();
-        }
+       
         for(;;)
         {
             
             System.out.println("------ Menu ------");
-            System.out.println("1. Chegada de Cliente");
+            System.out.println("1. Cliente Novo");
             System.out.println("2. Liberar Mesa");
             System.out.println("3. Mesas Ocupadas");
             System.out.println("4. Lista de Espera");
@@ -34,27 +43,16 @@ public class Main {
             if(op == 1)
             {
                 
-                System.out.println("Nome do Cliente:");
-                String nomeCliente = scanner.nextLine();
-               
-                System.out.println("Quantidade de Pessoas:");
-                int nPessoas = scanner.nextInt();
-              
-                scanner.nextLine();
-                
-                restaurante.requisitarMesa(nomeCliente, nPessoas);
-                restaurante.salvar();
-                restaurante.salvarLista();
+                restaurante.requisitarMesa(mesas);
                 
             }else if(op == 2){
                 //Método Liberar Mesa
                 System.out.println("Mesa a ser liberada:");
                 int nMesa = scanner.nextInt();
                 restaurante.mesaLiberada(nMesa);
-                restaurante.salvar();
-                restaurante.salvarLista();
+                
 
-            }else if(op == 3){
+             /*}else if(op == 3){
                 //Método quais mesas estão ocupadas
                 System.out.println("Mesas Indisponiveis");
                 int i = 0;
@@ -67,10 +65,10 @@ public class Main {
                     }
                     i++;
                 }
-            }else if(op == 4){
-                //Método para ver lista de espera
-                restaurante.verLista();
-            }else if(op == 5){
+             */}else if(op == 4){
+                System.out.println("Lista de espera:");
+                restaurante.imprimirLista(filaEspera);
+           }else if(op == 5){
                 break;
             }else{
                 System.out.println("Opção inválida");
