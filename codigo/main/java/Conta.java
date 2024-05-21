@@ -24,6 +24,8 @@ public class Conta {
         for (Menu menu : itensPedidos) {
             total += menu.getPreco();
         }
+
+        total = total * 1.1;
         return total;
     }
 
