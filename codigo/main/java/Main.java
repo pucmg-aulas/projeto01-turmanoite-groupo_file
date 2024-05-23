@@ -54,7 +54,8 @@ public class Main {
             System.out.println("4. Lista de Espera");
             System.out.println("5. Fazer Pedido");
             System.out.println("6. Fechar Conta");
-            System.out.println("7. Sair");
+            System.out.println("7. Imprimir Menu");
+            System.out.println("8. Sair");
             System.out.println("------------------");
             System.out.println("Escolha uma opção: ");
             int op = scanner.nextInt();
@@ -78,9 +79,10 @@ public class Main {
                 restaurante.mesasDisponiveis();
              }else if(op == 4){
                 System.out.println("Lista de espera:");
-                System.out.println(restaurante.imprimirLista(filaEspera));
+                restaurante.imprimirLista();
             }else if(op == 5){
                         System.out.println("Digite o número da mesa:");
+                        
                         int numeroMesa = scanner.nextInt();
                         scanner.nextLine();
 
@@ -92,19 +94,19 @@ public class Main {
 
                         System.out.println("--------------=---------------=-----------");
                         System.out.println("COMIDAS");
-                        System.out.println("1-Moqueca de Tilápia");
-                        System.out.println("2-Falafel Assado");
-                        System.out.println("3-Salada Primavera com Macarrão Konjac");
-                        System.out.println("4-Escondidinho de Frango");
-                        System.out.println("5-Strogonoff");
-                        System.out.println("6-Caçarola de carne com legumes");
+                        System.out.println("1-Moqueca de Tilápia R$9.90");
+                        System.out.println("2-Falafel Assado R$19.90");
+                        System.out.println("3-Salada Primavera com Macarrão Konjac R$29.90");
+                        System.out.println("4-Escondidinho de Frango R$39.90");
+                        System.out.println("5-Strogonoff R$49.90");
+                        System.out.println("6-Caçarola de carne com legumes R$59.90");
                         System.out.println("--------------=---------------=-----------");
                         System.out.println("BEBIDAS");
-                        System.out.println("7-Água");
-                        System.out.println("8-Suco");
-                        System.out.println("9-Refrigerante");
-                        System.out.println("10-Cerveja");
-                        System.out.println("11-Taça de Vinho");
+                        System.out.println("7-Água R$69.90");
+                        System.out.println("8-Suco R$79.90");
+                        System.out.println("9-Refrigerante R$89.90");
+                        System.out.println("10-Cerveja R$99.90");
+                        System.out.println("11-Taça de Vinho R$109.90");
                         System.out.println("--------------=---------------=-----------");
                         System.out.println("Digite o número do prato");
                         System.out.println("Digite 0 para parar");
@@ -152,7 +154,25 @@ public class Main {
                 } else {
                     System.out.println("Mesa não encontrada ou não está ocupada.");
                 }
-            } else if (op == 7) {
+            }else if(op == 7){
+                System.out.println("--------------=---------------=-----------");
+                System.out.println("COMIDAS");
+                System.out.println("1-Moqueca de Tilápia R$9.90");
+                System.out.println("2-Falafel Assado R$19.90");
+                System.out.println("3-Salada Primavera com Macarrão Konjac R$29.90");
+                System.out.println("4-Escondidinho de Frango R$39.90");
+                System.out.println("5-Strogonoff R$49.90");
+                System.out.println("6-Caçarola de carne com legumes R$59.90");
+                System.out.println("--------------=---------------=-----------");
+                System.out.println("BEBIDAS");
+                System.out.println("7-Água R$69.90");
+                System.out.println("8-Suco R$79.90");
+                System.out.println("9-Refrigerante R$89.90");
+                System.out.println("10-Cerveja R$99.90");
+                System.out.println("11-Taça de Vinho R$109.90");
+                System.out.println("--------------=---------------=-----------");
+                
+            } else if (op == 8) {
                 break;
             } else {
                 System.out.println("Opção inválida");
