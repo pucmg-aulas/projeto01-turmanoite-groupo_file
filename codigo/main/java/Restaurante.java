@@ -6,11 +6,13 @@ import java.util.Scanner;
 
 public class Restaurante implements Serializable{
     private List<Mesa> mesas;
+    public List<String> listadeespera;
     
 
     public Restaurante(List<Mesa> mesas)
     {
         this.mesas = mesas;
+        listadeespera= new ArrayList<>();
     }
     
 
@@ -42,21 +44,19 @@ public class Restaurante implements Serializable{
             System.out.println("Mesa disponível para o cliente.");
         } else {
             System.out.println("Nenhuma mesa disponível com capacidade suficiente no momento.");
+            listadeespera.add(nomeCliente);
         }
 
        
     }
     
 
-    public String imprimirLista(List<RequisicaoPorMesa> filaEspera) {
+    public void imprimirLista() {
         StringBuilder build = new StringBuilder();
-        for (RequisicaoPorMesa requisicao : filaEspera) {
-            build.append("Cliente: ").append(requisicao.getNomeCliente())
-              .append(", Lugares: ").append(requisicao.getNPessoas())
-              .append(", Mesa: ").append(requisicao.getMesaUtilizada().getCapacidade())
-              .append(" lugares\n");
+        for (String nomes : listadeespera) {
+            System.out.println(nomes);
         }
-        return build.toString();
+       
     }
 
     public void mesaLiberada(int nMesa) {
