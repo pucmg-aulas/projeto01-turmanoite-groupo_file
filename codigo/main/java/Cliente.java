@@ -1,11 +1,10 @@
-public class Cliente{
-    private  String nome;
+public class Cliente {
+    private String nome;
     private int quantidadePessoas;
 
-    public Cliente(String n , int qtd)
-    {
-        this.setNome(n);
-        this.setQuantidadePessoas(qtd);
+    public Cliente(String nome, int quantidadePessoas) {
+        this.setNome(nome);
+        this.setQuantidadePessoas(quantidadePessoas);
     }
 
     public String getNome() {
